@@ -22,7 +22,7 @@ class WasteCollectionCoordinator(DataUpdateCoordinator[Schedule]):
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(hours=6),
+            update_interval=timedelta(minutes=30),
         )
         self.schedule_id = schedule_id
 
