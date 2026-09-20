@@ -1,9 +1,11 @@
 {
   "domain": "waste_collection",
   "name": "Wywóz odpadów",
-  "codeowners": [],
+  "codeowners": ["@MajsterTukan"],
   "config_flow": true,
-  "documentation": "https://github.com/USERNAME/ha-waste-collection",
-  "iot_class": "local_polling",
+  "documentation": "https://github.com/MajsterTukan/GW-Garbage_Schedule",
+  "issue_tracker": "https://github.com/MajsterTukan/GW-Garbage_Schedule/issues",
+  "integration_type": "service",
+  "iot_class": "calculated",
   "version": "0.2.0"
 }
