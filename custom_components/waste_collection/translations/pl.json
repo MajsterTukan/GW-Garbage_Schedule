@@ -1,0 +1,23 @@
+{
+  "title": "Wywóz odpadów",
+  "config": {
+    "step": {
+      "year": {"title": "Wybierz rok", "description": "Najpierw wybierz rok harmonogramu.", "data": {"year": "Rok"}},
+      "schedule": {"title": "Wybierz harmonogram", "description": "Lista zawiera tylko harmonogramy z wybranego roku.", "data": {"schedule": "Harmonogram"}}
+    },
+    "abort": {
+      "no_schedules": "Nie znaleziono poprawnych plików JSON w katalogu data.",
+      "no_schedules_for_year": "Brak harmonogramów dla wybranego roku."
+    }
+  },
+  "options": {
+    "step": {
+      "year": {"title": "Zmień rok", "description": "Wybierz rok nowego harmonogramu.", "data": {"year": "Rok"}},
+      "schedule": {"title": "Zmień harmonogram", "description": "Wybierz harmonogram dla wskazanego roku.", "data": {"schedule": "Harmonogram"}}
+    },
+    "abort": {
+      "no_schedules": "Nie znaleziono poprawnych plików JSON w katalogu data.",
+      "no_schedules_for_year": "Brak harmonogramów dla wybranego roku."
+    }
+  }
+}

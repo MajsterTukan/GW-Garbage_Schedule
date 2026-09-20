@@ -1,0 +1,23 @@
+{
+  "title": "Waste Collection",
+  "config": {
+    "step": {
+      "year": {"title": "Select year", "description": "Select the schedule year first.", "data": {"year": "Year"}},
+      "schedule": {"title": "Select schedule", "description": "Only schedules for the selected year are shown.", "data": {"schedule": "Schedule"}}
+    },
+    "abort": {
+      "no_schedules": "No valid JSON schedules were found in the data directory.",
+      "no_schedules_for_year": "No schedules exist for the selected year."
+    }
+  },
+  "options": {
+    "step": {
+      "year": {"title": "Change year", "description": "Select the new schedule year.", "data": {"year": "Year"}},
+      "schedule": {"title": "Change schedule", "description": "Select a schedule for that year.", "data": {"schedule": "Schedule"}}
+    },
+    "abort": {
+      "no_schedules": "No valid JSON schedules were found in the data directory.",
+      "no_schedules_for_year": "No schedules exist for the selected year."
+    }
+  }
+}
