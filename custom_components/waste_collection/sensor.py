@@ -59,19 +59,37 @@ def native_value(self) -> str:
 
     return next_date.isoformat()
 
-    @property
-    def extra_state_attributes(self) -> dict[str, object]:
-        """Return useful automation and diagnostic attributes."""
-        today = dt_util.now().date()
-        upcoming = [value for value in self.coordinator.data.dates[self._fraction] if value >= today]
-        next_date = upcoming[0] if upcoming else None
-        return {
-            "days_remaining": (next_date - today).days if next_date else None,
-            "year": self.coordinator.data.year,
-            "source": self.coordinator.data.source,
-            "collection_day": self.coordinator.data.collection_day,
-            "upcoming": [value.isoformat() for value in upcoming],
-        }
+@property
+def extra_state_attributes(self) -> dict[str, object]:
+    """Return useful automation and diagnostic attributes."""
+    today = dt_util.now().date()
+
+    upcoming = [
+        value
+        for value in self.coordinator.data.dates[self._fraction]
+        if value >= today
+    ]
+
+    next_date = upcoming[0] if upcoming else None
+    days_remaining = (next_date - today).days if next_date else None
+
+    if days_remaining is None:
+        status = "finished"
+    elif days_remaining == 0:
+        status = "today"
+    elif days_remaining == 1:
+        status = "tomorrow"
+    else:
+        status = "scheduled"
+
+    return {
+        "days_remaining": days_remaining,
+        "status": status,
+        "year": self.coordinator.data.year,
+        "source": self.coordinator.data.source,
+        "collection_day": self.coordinator.data.collection_day,
+        "upcoming": [value.isoformat() for value in upcoming],
+    }
 
     @property
     def device_info(self) -> DeviceInfo:
