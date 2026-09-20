@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import date
-
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.util import dt as dt_util
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -32,7 +30,6 @@ async def async_setup_entry(
 class WasteCollectionSensor(CoordinatorEntity[WasteCollectionCoordinator], SensorEntity):
     """Next collection date for one waste fraction."""
 
-    _attr_device_class = SensorDeviceClass.DATE
     _attr_has_entity_name = True
 
     def __init__(self, coordinator: WasteCollectionCoordinator, entry_id: str, fraction: str) -> None:
@@ -43,11 +40,24 @@ class WasteCollectionSensor(CoordinatorEntity[WasteCollectionCoordinator], Senso
         self._attr_name = FRACTION_NAMES.get(fraction, fraction.replace("_", " ").title())
         self._attr_icon = FRACTION_ICONS.get(fraction, "mdi:trash-can-outline")
 
-    @property
-    def native_value(self) -> date | None:
-        """Return the nearest date that is today or later."""
-        today = dt_util.now().date()
-        return next((value for value in self.coordinator.data.dates[self._fraction] if value >= today), None)
+@property
+def native_value(self) -> str:
+    """Return the nearest collection date or information about its absence."""
+    today = dt_util.now().date()
+
+    next_date = next(
+        (
+            value
+            for value in self.coordinator.data.dates[self._fraction]
+            if value >= today
+        ),
+        None,
+    )
+
+    if next_date is None:
+        return "Brak dodatkowych wywozów"
+
+    return next_date.isoformat()
 
     @property
     def extra_state_attributes(self) -> dict[str, object]:
