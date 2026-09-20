@@ -4,7 +4,9 @@ Niestandardowa integracja Home Assistant udostępniająca harmonogram odbioru od
 
 Harmonogramy są przechowywane lokalnie jako pliki JSON. Integracja automatycznie wykrywa dostępne lata i rejony, a następnie tworzy osobne sensory dla poszczególnych frakcji odpadów.
 
-Dokumentacja dotyczy wydania `v0.2.2`.
+<a href="https://buycoffee.to/majstertukan" target="_blank"><img src="https://buycoffee.to/static/img/share/share-button-primary--pl.png" style="width: 117px; height: 30px" alt="Postaw kawę dla majstertukan na buycoffee.to"></a>
+
+Dokumentacja dotyczy wydania `v0.2.4`.
 
 ## Funkcje
 
